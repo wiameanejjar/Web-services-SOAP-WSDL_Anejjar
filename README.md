@@ -10,8 +10,9 @@ L'objectif de ce TP est de concevoir et implémenter un service web SOAP basé s
 
   - Convertir un montant de l'euro en dirhams (DH).  
   - Consulter un compte bancaire (solde et détails).  
-  - Lister les comptes disponibles.
-Les étapes clés incluent :  
+  - Lister les comptes disponibles.  
+Les étapes clés incluent :
+
    -Le déploiement du service via un serveur JAX-WS.  
    - L'analyse du WSDL généré.  
    - Le test des opérations avec SoapUI.  
@@ -31,8 +32,8 @@ Le projet est organisé en deux modules principaux :
      - Contient le package ma.fs avec la classe: Main.java c'est le client Java utilisant les stubs générés (via wsimport).
      - Et le package proxy : Contient les classes générées automatiquement à partir du WSDL. 
     
-  ![img](structure1.JPG)  
-  ![img](structure2.JPG)  
+  ![img](Screens/stru.JPG)  
+ 
 
  ---
 ## 📄 Explication détaillée 
