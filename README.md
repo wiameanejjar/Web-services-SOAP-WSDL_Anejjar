@@ -66,9 +66,10 @@ Ce service sert de point central pour les opérations bancaires, en fournissant 
   ![img](Screens/BANQUE.JPG)
 
   ### - Classe Compte :
-La classe Compte est une classe Java standard qui modélise un compte bancaire dans le système. Elle contient trois attributs principaux : code (identifiant unique du compte), solde (montant disponible) et dateCreation (date d'ouverture du compte). La classe propose deux constructeurs :
-    - Un constructeur par défaut et un constructeur paramétré initialisant tous les champs.
-    - Ainsi que les getters et setters correspondants pour chaque attribut, permettant ainsi une manipulation aisée des données.
+La classe Compte est une classe Java standard qui modélise un compte bancaire dans le système. Elle contient trois attributs principaux : code (identifiant unique du compte), solde (montant disponible) et dateCreation (date d'ouverture du compte). La classe propose deux constructeurs :  
+     - Un constructeur par défaut et un constructeur paramétré initialisant tous les champs.  
+     - Ainsi que les getters et setters correspondants pour chaque attribut, permettant ainsi une manipulation aisée des données.  
+     
 Cette classe sert de modèle de données pour les opérations du service web BanqueService, où elle est utilisée pour représenter les comptes retournés par les méthodes getCompte() et ListComptes(). La simplicité de sa structure en fait un objet facilement sérialisable en XML pour le transport via les messages SOAP, tout en permettant une extension future avec des fonctionnalités supplémentaires comme des opérations bancaires plus complexes.
   ![img](Screens/COMPTE.JPG)
 
