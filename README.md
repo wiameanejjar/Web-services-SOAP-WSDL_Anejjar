@@ -2,50 +2,35 @@
 ## Filière: MSDIA
 
 ---
-# Rapport de TP – Application de Gestion Hospitalière avec Spring Boot, Spring Security et Thymeleaf
+# Rapport de TP – Services Web SOAP avec JAX-WS
 
 ## 📌 Objectif du TP
 
-L'objectif de ce TP est de développer une application web complète de gestion hospitalière en utilisant Spring Boot comme framework principal, Spring MVC pour l'architecture web,
-Thymeleaf comme moteur de templates,Spring Data JPA pour la persistance des données,Spring Security pour la gestion de l'authentification et des autorisations.
-Cette application permet de modéliser les principales entités d’un système hospitalier, telles que les patients, les médecins, les rendez-vous, les consultations, et leur gestion au travers de services et d’un contrôleur REST.
+L'objectif de ce TP est de concevoir et implémenter un service web SOAP basé sur le protocole WSDL en utilisant JAX-WS. Ce service permettra de :  
 
-L'application doit permettre de :
- - Gérer les patients (CRUD complet).
- - Implémenter une pagination des résultats.
- - Ajouter des fonctionnalités de recherche.
- - Sécuriser l'accès aux différentes fonctionnalités.
- - Utiliser un système de templates pour une interface cohérente.
- - Valider les données des formulaires.
+ - Convertir un montant de l'euro en dirhams (DH).  
+ - Consulter un compte bancaire (solde et détails).  
+ - Lister les comptes disponibles.  
+Les étapes clés incluent :  
+ -Le déploiement du service via un serveur JAX-WS.  
+ - L'analyse du WSDL généré.  
+ - Le test des opérations avec SoapUI.  
+ - La création d'un client Java SOAP (génération des stubs à partir du WSDL).  
 
 ---
 
 ## 🧱 Structure du Projet
 
-Le projet suit une architecture MVC (Modèle-Vue-Contrôleur) typique d'une application Spring Boot, il contient les packages suivants :
- - entities : contient les classes de domaine représentant les entités métier : Classe Patient.
- - repositories : contient les interfaces JPA permettant l’accès aux données :
-    - Interface PatientRepository: Fournit des méthodes CRUD automatiques et la recherche paginée.
- - security :Gère l'authentification et l'autorisation via Spring Security, incluant la modélisation des utilisateurs/rôles, la configuration de sécurité et les contrôleurs dédiés.
-   Il contient les packages:
-    - Entités qui contient les classes AppRole pour définir les rôles d'accès et AppUser pour modéliser un utilisateur avec ses credentials et rôles associés.
-    - Répo qui contient les interfaces AppRoleRepository / AppUserRepository pour persister et rechercher rôles/utilisateurs en base.
-    - Service qui contient l'interface AccountService qui définit les contrats pour la gestion des utilisateurs et rôles, l'implémentation AccountServiceImpl qui implémente les règles métier (validation des mots de passe, gestion des transactions avec @Transactional), ainsi l'implémentation UserDetailServiceImpl pour adapter le modèle AppUser à Spring Security en implémentant UserDetailsService pour l'authentification.
-    - La classe SecurityConfig pour configurer les règles d'accès et l'authentification (ex: routes protégées).
- - web : Contient les contrôleurs MVC :
-     - Classe PatientController: Gère l'affichage et la recherche des patients.
-     - Classe SecurityController: Gère les vues liées à l'authentification.
- - HospitalApplication : Point d'entrée de l'application avec configuration automatique.
- - templates: Contient les vues Thymeleaf pour l'interface utilisateur, structurées avec des fragments réutilisables et des formulaires liés aux entités.Il contient les fichiers suivants:
-     - template1.html : Template de base avec navbar et layout commun à toutes les pages.
-     - patients.html : Affiche la liste paginée des patients avec recherche et actions (éditer/supprimer).
-     - formPatients.html : Formulaire de création d'un patient avec validation.
-     - editPatients.html : Vue spécifique pour modifier un patient existant.
-     - login.html : Page d'authentification avec formulaire de connexion.
-     - notAuthorized.html : Message d'erreur pour les accès non autorisés.
-  - application.properties : Paramètres de l'application (BDD, sécurité, etc.).
-  - schema.sql : Script SQL pour initialiser la structure de la base de données.
-  
+Le projet est organisé en deux modules principaux :  
+1. Serveur SOAP (ws-soap):  
+   Pour le package ws il contient les classes suivantes:  
+      - BanqueService.java: Interface du service web qui contient les méthodes (convertion, getCompte, listComptes).  
+      - Compte.java: Classe d'entité représentant un compte bancaire.  
+      -  ServerJWS.java :Point d'entrée pour publier le service avec Endpoint.publish().  
+2. Client SOAP (client-soap-java):
+     - Le package ma.fs contient la classe: Main.java c'est le client Java utilisant les stubs générés (via wsimport).
+     - Et le package proxy : Contient les classes générées automatiquement à partir du WSDL. 
+    
   ![img](structure1.JPG)  
   ![img](structure2.JPG)  
 
@@ -110,8 +95,11 @@ La méthode loadUserByUsername récupère un utilisateur par son username via ap
   
 ---
  ## - Conclusion
-Ce TP a permis de mettre en pratique Spring Boot, Spring Security et Thymeleaf pour développer une application web sécurisée de gestion des patients. Nous avons implémenté un CRUD complet avec pagination, une authentification basée sur les rôles (USER/ADMIN), et une interface responsive grâce à Bootstrap. L’utilisation de fragments Thymeleaf a favorisé la réutilisabilité du code, tandis que Spring Security a garanti la protection des routes sensibles. Ce projet illustre comment concevoir une application robuste, maintenable et sécurisée avec l’écosystème Spring.
-
+Ce TP a permis de maîtriser la création de services web SOAP/WSDL avec JAX-WS, depuis le déploiement jusqu'au développement d'un client Java. Les compétences acquises incluent :  
+     - La génération automatique de WSDL.
+     - L'utilisation de stubs pour simplifier les appels SOAP.
+     - L'analyse des messages XML échangés.
+Ce projet démontre l'interopérabilité des services SOAP, idéale pour les systèmes hétérogènes nécessitant une communication standardisée.
 
 
 ---
