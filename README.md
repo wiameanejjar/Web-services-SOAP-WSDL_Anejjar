@@ -75,7 +75,7 @@ Cette classe sert de modèle de données pour les opérations du service web Ban
 
 ---
 
-### Tests des opérations SOAP avec SoapUI : Requêtes/Réponses :
+### - Tests des opérations SOAP avec SoapUI : Requêtes/Réponses :
   
 Nous avons utilisé SoapUI pour tester les différentes opérations du service web BanqueWS et vérifier le format des messages SOAP échangés. Voici les résultats obtenus pour les trois principales fonctionnalités :  
 #### 1. la conversion euro-dirham :  Conversion de 32 EUR → 352 DH avec la structure XML des requêtes/réponses.
@@ -129,10 +129,10 @@ Ces classes servent de pont entre le client Java et le service SOAP, en encapsul
   
 ---
  ## - Conclusion
-Ce TP a permis de maîtriser la création de services web SOAP/WSDL avec JAX-WS, depuis le déploiement jusqu'au développement d'un client Java. Les compétences acquises incluent :  
-     - La génération automatique de WSDL.
-     - L'utilisation de stubs pour simplifier les appels SOAP.
-     - L'analyse des messages XML échangés.
+Ce TP a permis de maîtriser la création de services web SOAP/WSDL avec JAX-WS, depuis le déploiement jusqu'au développement d'un client Java. Les compétences acquises incluent :    
+       - La génération automatique de WSDL.  
+       - L'utilisation de stubs pour simplifier les appels SOAP.  
+       - L'analyse des messages XML échangés.  
 Ce projet démontre l'interopérabilité des services SOAP, idéale pour les systèmes hétérogènes nécessitant une communication standardisée.
 
 
