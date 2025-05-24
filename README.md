@@ -42,13 +42,16 @@ Le projet est organisé en deux modules principaux :
 
  ---
 ## 📄 Explication détaillée 
+  
 ---
- ## 🗂 Package entities
-### - Classe Patient :
-La classe Patient est une entité JPA qui modélise un patient dans le système hospitalier. Annotée avec @Entity, elle est mappée à une table en base de données c'est à dire que cette classe représente une table dans la base de données, où chaque instance de Patient correspondra à une ligne dans cette table. L'annotation @Id marque le champ id comme clé primaire, tandis que @GeneratedValue(strategy = GenerationType.IDENTITY) permet sa génération automatique. Les contraintes de validation (@NotEmpty, @Size, @DecimalMin) assurent l'intégrité des données c'est à dire que le nom doit être non vide et compris entre 4 et 40 caractères, et le score minimal est fixé à 100.Ainsi, on a utilisé l'annotation @Temporal(TemporalType.DATE) pour préciser que le champ dateNaissance stocke uniquement la date (sans l'heure), et @DateTimeFormat(pattern = "yyyy-MM-dd") standardise son format, ainsi l'attribut malade c'est pour de type boolean pour spécifier l'état de chaque patient.  
-Les annotations Lombok (@Data, @NoArgsConstructor, @AllArgsConstructor, @Builder) génèrent automatiquement les getters/setters, constructeurs et un builder. Cette classe sert de fondation pour la persistance et la validation des données patients dans l'application.
+ -` Protocole SOAP` : est un protocole de communication XML basé sur des standards, utilisé pour échanger des données structurées entre applications via des messages XML, généralement transportés par HTTP. Il garantit une interopérabilité entre systèmes hétérogènes grâce à son format strict et son contrat WSDL.
 
-  ![img](classPatients.JPG)
+ ## 🗂 Package `ws`
+### - Classe BanqueService :
+La classe BanqueService est un service web SOAP implémenté avec JAX-WS. Annotée avec @WebService(serviceName = "BanqueWS") pour définir le nom technique du service (BanqueWS) dans le WSDL généré, qui sera utilisé pour accéder au service via l'URL de déploiement (http://0.0.0:9090/BanqueWS?wsdl), elle expose trois opérations accessibles via le protocole SOAP. Chaque méthode est marquée par @WebMethod, ce qui les rend disponibles dans le WSDL généré automatiquement. La méthode conversion(), annotée avec @WebMethod(operationName = "ConversionEuroToDH"), effectue une conversion de devises (euro vers dirham) en multipliant le montant par 11. Les méthodes getCompte() et ListComptes() permettent respectivement de récupérer un compte bancaire par son code et de lister plusieurs comptes, chacune utilisant @WebParam pour définir les noms des paramètres dans le WSDL. Les comptes sont instanciés avec des données simulées (solde aléatoire et date courante).  
+Ce service sert de point central pour les opérations bancaires, en fournissant une interface standardisée via SOAP/WSDL pour une interopérabilité avec différents clients.
+
+  ![img](Screens/BANQUE.JPG)
 
  ## 🗂️ Package repositories
 ### - Interface `PatientRepository` : 
