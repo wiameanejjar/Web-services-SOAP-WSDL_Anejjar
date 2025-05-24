@@ -12,9 +12,9 @@ L'objectif de ce TP est de concevoir et implémenter un service web SOAP basé s
   - Consulter un compte bancaire (solde et détails).  
   - Lister les comptes disponibles.  
 Les étapes clés incluent :
-
-   -Le déploiement du service via un serveur JAX-WS.  
-   - L'analyse du WSDL généré.  
+ 
+   - Le déploiement du service via un serveur JAX-WS.
+   - L'analyse du WSDL généré.
    - Le test des opérations avec SoapUI.  
    - La création d'un client Java SOAP (génération des stubs à partir du WSDL).  
 
