@@ -56,6 +56,7 @@ La classe ServerJWS est le point de déploiement du service web SOAP, utilisant 
 Cette classe permet l'exposition du service bancaire sur le réseau, en permettant ainsi aux clients distants d'invoquer les opérations de conversion de devises et de gestion de comptes via des requêtes SOAP.
 
   ![img](Screens/server.JPG)
+  ![img](Screens/cap1.JPG)
  
  ## 2. 🗂 Package `ws` : 
 ### - Classe BanqueService :
@@ -71,6 +72,25 @@ La classe Compte est une classe Java standard qui modélise un compte bancaire d
 Cette classe sert de modèle de données pour les opérations du service web BanqueService, où elle est utilisée pour représenter les comptes retournés par les méthodes getCompte() et ListComptes(). La simplicité de sa structure en fait un objet facilement sérialisable en XML pour le transport via les messages SOAP, tout en permettant une extension future avec des fonctionnalités supplémentaires comme des opérations bancaires plus complexes.
   ![img](Screens/COMPTE.JPG)
 
+---
+
+### Tests des opérations SOAP avec SoapUI : Requêtes/Réponses :
+  
+Nous avons utilisé SoapUI pour tester les différentes opérations du service web BanqueWS et vérifier le format des messages SOAP échangés. Voici les résultats obtenus pour les trois principales fonctionnalités :  
+#### 1. la conversion euro-dirham : La conversion (32 EUR → 352 DH) avec la structure XML des requêtes/réponses.
+
+  ![img](Screens/capture2.JPG)
+  
+#### 2. La consultation d'un compte : La consultation d'un compte (code=4) avec les détails retournés (solde, date).
+
+  ![img](Screens/capture3.JPG)
+  
+
+#### 3. Listing des comptes : La liste des comptes (3 comptes simulés avec données aléatoires).
+
+  ![img](Screens/capture4.JPG)
+
+
 
 
 ---
@@ -84,7 +104,8 @@ La classe Main elle utilise le proxy généré (via wsimport) pour se connecter 
     - (1) la conversion d'un montant (90 euros en dirhams via conversionEuroToDH()).  
     - (2) la récupération d'un compte spécifique (getCompte(4)) avec affichage de ses détails (code, solde, date).  
     - (3) le listing de tous les comptes (listCompte()) avec itération pour afficher leurs codes.  
-Cette implémentation démontre l'interopérabilité SOAP en Java, où chaque appel de méthode déclenche une requête SOAP sous-jacente, avec les résultats désérialisés automatiquement en objets Java (Compte). Le client valide ainsi le bon fonctionnement du service tout en illustrant le pattern standard de consommation des web services SOAP via des stubs générés.
+Cette implémentation démontre l'interopérabilité SOAP en Java, où chaque appel de méthode déclenche une requête SOAP sous-jacente, avec les résultats désérialisés automatiquement en objets Java (Compte). Le client valide ainsi le bon fonctionnement du service tout en illustrant le pattern standard de consommation des web services SOAP via des stubs générés.  
+
  ![img](patientRepo.JPG)
 
 ## 2. Package `proxy` : 
@@ -102,7 +123,7 @@ Ces classes servent de pont entre le client Java et le service SOAP, en encapsul
 
  ![img](Screens/proxy.JPG)
 
- 
+  ## - Résultat : 
   
   
 ---
