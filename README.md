@@ -46,12 +46,42 @@ Le projet est organisé en deux modules principaux :
 ---
  -` Protocole SOAP` : est un protocole de communication XML basé sur des standards, utilisé pour échanger des données structurées entre applications via des messages XML, généralement transportés par HTTP. Il garantit une interopérabilité entre systèmes hétérogènes grâce à son format strict et son contrat WSDL.
 
+---
+
+ ### 1. Serveur SOAP (ws-soap):
+ 
+ ---
+ 
+ ## 🗂 Package `Java`
+ ### - Classe ServerJWS  :
+La classe ServerJWS est le point de déploiement du service web SOAP, utilisant la classe Endpoint de JAX-WS. Elle contient une méthode main() qui publie le service BanqueService à l'adresse "http://0.0.0:9090/" via la méthode statique Endpoint.publish(). Cette opération permet de rendre le service accessible aux clients SOAP et génère automatiquement le WSDL correspondant (disponible à l'URL "http://0.0.0:9090/BanqueWS?wsdl"). Le message affiché dans la console ("Web service déployé sur...") confirme le succès du déploiement.  
+Cette classe permet l'exposition du service bancaire sur le réseau, en permettant ainsi aux clients distants d'invoquer les opérations de conversion de devises et de gestion de comptes via des requêtes SOAP.
+
+  ![img](Screens/server.JPG)
+ 
  ## 🗂 Package `ws`
 ### - Classe BanqueService :
-La classe BanqueService est un service web SOAP implémenté avec JAX-WS. Annotée avec @WebService(serviceName = "BanqueWS") pour définir le nom technique du service (BanqueWS) dans le WSDL généré, qui sera utilisé pour accéder au service via l'URL de déploiement (http://0.0.0:9090/BanqueWS?wsdl), elle expose trois opérations accessibles via le protocole SOAP. Chaque méthode est marquée par @WebMethod, ce qui les rend disponibles dans le WSDL généré automatiquement. La méthode conversion(), annotée avec @WebMethod(operationName = "ConversionEuroToDH"), effectue une conversion de devises (euro vers dirham) en multipliant le montant par 11. Les méthodes getCompte() et ListComptes() permettent respectivement de récupérer un compte bancaire par son code et de lister plusieurs comptes, chacune utilisant @WebParam pour définir les noms des paramètres dans le WSDL. Les comptes sont instanciés avec des données simulées (solde aléatoire et date courante).  
+La classe BanqueService est un service web SOAP implémenté avec JAX-WS. Annotée avec @WebService(serviceName = "BanqueWS") pour définir le nom technique du service (BanqueWS) dans le WSDL généré, qui sera utilisé pour accéder au service via l'URL de déploiement (http://0.0.0:9090/BanqueWS?wsdl) , elle expose trois opérations accessibles via le protocole SOAP. Chaque méthode est marquée par @WebMethod, ce qui les rend disponibles dans le WSDL généré automatiquement. La méthode conversion(), annotée avec @WebMethod(operationName = "ConversionEuroToDH"), effectue une conversion de devises (euro vers dirham) en multipliant le montant par 11. Les méthodes getCompte() et ListComptes() permettent respectivement de récupérer un compte bancaire par son code et de lister plusieurs comptes, chacune utilisant @WebParam pour définir les noms des paramètres dans le WSDL. Les comptes sont instanciés avec des données simulées (solde aléatoire et date courante).  
 Ce service sert de point central pour les opérations bancaires, en fournissant une interface standardisée via SOAP/WSDL pour une interopérabilité avec différents clients.
 
   ![img](Screens/BANQUE.JPG)
+
+  ### - Classe Compte :
+La classe Compte est une classe Java standard qui modélise un compte bancaire dans le système. Elle contient trois attributs principaux : code (identifiant unique du compte), solde (montant disponible) et dateCreation (date d'ouverture du compte). La classe propose deux constructeurs :
+    - Un constructeur par défaut et un constructeur paramétré initialisant tous les champs.
+    - Ainsi que les getters et setters correspondants pour chaque attribut, permettant ainsi une manipulation aisée des données.
+Cette classe sert de modèle de données pour les opérations du service web BanqueService, où elle est utilisée pour représenter les comptes retournés par les méthodes getCompte() et ListComptes(). La simplicité de sa structure en fait un objet facilement sérialisable en XML pour le transport via les messages SOAP, tout en permettant une extension future avec des fonctionnalités supplémentaires comme des opérations bancaires plus complexes.
+  ![img](Screens/COMPTE.JPG)
+
+
+
+---
+
+### 2. Client SOAP (client-soap-java):
+
+---
+
+
 
  ## 🗂️ Package repositories
 ### - Interface `PatientRepository` : 
