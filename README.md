@@ -8,14 +8,14 @@
 
 L'objectif de ce TP est de concevoir et implémenter un service web SOAP basé sur le protocole WSDL en utilisant JAX-WS. Ce service permettra de :  
 
- - Convertir un montant de l'euro en dirhams (DH).  
- - Consulter un compte bancaire (solde et détails).  
- - Lister les comptes disponibles.  
+  - Convertir un montant de l'euro en dirhams (DH).  
+  - Consulter un compte bancaire (solde et détails).  
+  - Lister les comptes disponibles.
 Les étapes clés incluent :  
- -Le déploiement du service via un serveur JAX-WS.  
- - L'analyse du WSDL généré.  
- - Le test des opérations avec SoapUI.  
- - La création d'un client Java SOAP (génération des stubs à partir du WSDL).  
+   -Le déploiement du service via un serveur JAX-WS.  
+   - L'analyse du WSDL généré.  
+   - Le test des opérations avec SoapUI.  
+   - La création d'un client Java SOAP (génération des stubs à partir du WSDL).  
 
 ---
 
@@ -23,12 +23,12 @@ Les étapes clés incluent :
 
 Le projet est organisé en deux modules principaux :  
 1. Serveur SOAP (ws-soap):  
-   Pour le package ws il contient les classes suivantes:  
+   Contient le package ws qui contient les classes suivantes:  
       - BanqueService.java: Interface du service web qui contient les méthodes (convertion, getCompte, listComptes).  
       - Compte.java: Classe d'entité représentant un compte bancaire.  
       -  ServerJWS.java :Point d'entrée pour publier le service avec Endpoint.publish().  
 2. Client SOAP (client-soap-java):
-     - Le package ma.fs contient la classe: Main.java c'est le client Java utilisant les stubs générés (via wsimport).
+     - Contient le package ma.fs avec la classe: Main.java c'est le client Java utilisant les stubs générés (via wsimport).
      - Et le package proxy : Contient les classes générées automatiquement à partir du WSDL. 
     
   ![img](structure1.JPG)  
