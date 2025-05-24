@@ -66,7 +66,7 @@ Ce service sert de point central pour les opérations bancaires, en fournissant 
   ![img](Screens/BANQUE.JPG)
 
   ### - Classe Compte :
-La classe Compte est une classe Java standard qui modélise un compte bancaire dans le système. Elle contient trois attributs principaux : code (identifiant unique du compte), solde (montant disponible) et dateCreation (date d'ouverture du compte). La classe propose deux constructeurs :  
+La classe Compte est une classe Java standard qui modélise un compte bancaire dans le système. Elle contient trois attributs principaux : code (identifiant unique du compte), solde (montant disponible) et dateCreation (date d'ouverture du compte). La classe propose deux constructeurs:  
      - Un constructeur par défaut et un constructeur paramétré initialisant tous les champs.  
      - Ainsi que les getters et setters correspondants pour chaque attribut, permettant ainsi une manipulation aisée des données.  
      
@@ -78,16 +78,16 @@ Cette classe sert de modèle de données pour les opérations du service web Ban
 ### Tests des opérations SOAP avec SoapUI : Requêtes/Réponses :
   
 Nous avons utilisé SoapUI pour tester les différentes opérations du service web BanqueWS et vérifier le format des messages SOAP échangés. Voici les résultats obtenus pour les trois principales fonctionnalités :  
-#### 1. la conversion euro-dirham : La conversion (32 EUR → 352 DH) avec la structure XML des requêtes/réponses.
+#### 1. la conversion euro-dirham :  Conversion de 32 EUR → 352 DH avec la structure XML des requêtes/réponses.
 
   ![img](Screens/capture2.JPG)
   
-#### 2. La consultation d'un compte : La consultation d'un compte (code=4) avec les détails retournés (solde, date).
+#### 2. La consultation d'un compte : Consultation d'un compte (code=4) avec les détails retournés (solde, date).
 
   ![img](Screens/capture3.JPG)
   
 
-#### 3. Listing des comptes : La liste des comptes (3 comptes simulés avec données aléatoires).
+#### 3. Listing des comptes : Liste des comptes (3 comptes simulés avec données aléatoires).
 
   ![img](Screens/capture4.JPG)
 
