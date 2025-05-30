@@ -124,7 +124,7 @@ Ces classes servent de pont entre le client Java et le service SOAP, en encapsul
 
  ![img](Screens/proxy.JPG)
 
-  ## - Résultat : 
+
   
   
 ---
