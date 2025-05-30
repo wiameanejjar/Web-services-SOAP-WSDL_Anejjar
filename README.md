@@ -107,7 +107,6 @@ La classe Main elle utilise le proxy généré (via wsimport) pour se connecter 
     - (3) le listing de tous les comptes (listCompte()) avec itération pour afficher leurs codes.  
 Cette implémentation démontre l'interopérabilité SOAP en Java, où chaque appel de méthode déclenche une requête SOAP sous-jacente, avec les résultats désérialisés automatiquement en objets Java (Compte). Le client valide ainsi le bon fonctionnement du service tout en illustrant le pattern standard de consommation des web services SOAP via des stubs générés.  
 
- ![img](patientRepo.JPG)
 
 ## 2. Package `proxy` : 
 
